@@ -1,25 +1,62 @@
 {
-  "manifest_version": 3,
-  "name": "Prompt Manager",
-  "version": "1.0",
-  "description": "Save and quickly access your AI prompts",
-  "permissions": [
-    "storage",
-    "activeTab"
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Prompt Manager"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
-  "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
-  }
+    "manifest_version": 3,
+    "name": "Prompt Manager",
+    "version": "1.0",
+    "description": "Manage and quickly paste AI prompts into chat interfaces",
+    
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    
+    "host_permissions": [
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://bard.google.com/*",
+        "https://gemini.google.com/*",
+        "https://*/*",
+        "http://*/*"
+    ],
+    
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Prompt Manager",
+        "default_icon": {
+            "16": "icon16.png",
+            "32": "icon32.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        }
+    },
+    
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*",
+                "https://claude.ai/*",
+                "https://bard.google.com/*",
+                "https://gemini.google.com/*",
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": ["content.js"],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ],
+    
+    "icons": {
+        "16": "icon16.png",
+        "32": "icon32.png", 
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    
+    "web_accessible_resources": [
+        {
+            "resources": ["content.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
