@@ -2,7 +2,7 @@
 
 A powerful Chrome extension that helps you manage and quickly paste AI prompts into various chat interfaces like ChatGPT, Claude, Google Gemini, and other AI chat platforms.
 
-![Prompt Manager](../images/icon128.png)
+![Prompt Manager](images/icon128.png)
 
 ## Features
 
