@@ -305,10 +305,20 @@ function showToast(message, type = 'success') {
     // Create toast element
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
-    toast.innerHTML = `
-        <i class="material-icons">${type === 'error' ? 'error' : 'check_circle'}</i>
-        <span>${message}</span>
-    `;
+    
+    // Create icon element
+    const icon = document.createElement('i');
+    icon.className = 'material-icons';
+    icon.textContent = type === 'error' ? 'error' : 'check_circle';
+    icon.style.fontSize = '20px'; // Ensure icon size is consistent
+    
+    // Create message span
+    const span = document.createElement('span');
+    span.textContent = message;
+    
+    // Append elements
+    toast.appendChild(icon);
+    toast.appendChild(span);
     
     // Add toast styles
     Object.assign(toast.style, {
@@ -349,7 +359,7 @@ function showToast(message, type = 'success') {
             toast.remove();
             style.remove();
         }, 300);
-    }, 3000);
+    }, 9000);
 }
 
 // Enhanced paste prompt function with better error handling
@@ -375,7 +385,7 @@ async function pastePrompt(text) {
         try {
             await chrome.scripting.executeScript({
                 target: { tabId: tab.id },
-                files: ['content.js']
+                files: ['../script/content.js']
             });
             console.log('Content script injected successfully');
         } catch (injectError) {
@@ -392,7 +402,7 @@ async function pastePrompt(text) {
         });
         
         if (response && response.success) {
-            showToast('✅ Prompt pasted successfully!');
+            showToast('Prompt pasted successfully!');
             // Close popup after short delay
             setTimeout(() => window.close(), 800);
         } else {
@@ -405,13 +415,13 @@ async function pastePrompt(text) {
         // Fallback: copy to clipboard
         try {
             await navigator.clipboard.writeText(text);
-            showToast('📋 Prompt copied to clipboard!');
+            showToast('Prompt copied to clipboard!');
             console.log('Copied to clipboard as fallback');
             // Don't close popup immediately for clipboard fallback
             setTimeout(() => window.close(), 1500);
         } catch (clipboardError) {
             console.error('Clipboard fallback failed:', clipboardError);
-            showToast('❌ Failed to paste or copy prompt', 'error');
+            showToast(' Failed to paste or copy prompt', 'error');
         }
     }
 }

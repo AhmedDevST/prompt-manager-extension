@@ -20,13 +20,13 @@
     ],
     
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "./popup/popup.html",
         "default_title": "Prompt Manager",
         "default_icon": {
-            "16": "icon16.png",
-            "32": "icon32.png",
-            "48": "icon48.png",
-            "128": "icon128.png"
+            "16": "./images/icon16.png",
+            "32": "./images/icon32.png",
+            "48": "./images/icon48.png",
+            "128": "./images/icon128.png"
         }
     },
     
@@ -40,22 +40,22 @@
                 "https://*/*",
                 "http://*/*"
             ],
-            "js": ["content.js"],
+            "js": ["./script/content.js"],
             "run_at": "document_end",
             "all_frames": false
         }
     ],
     
     "icons": {
-        "16": "icon16.png",
-        "32": "icon32.png", 
-        "48": "icon48.png",
-        "128": "icon128.png"
+        "16": "./images/icon16.png",
+        "32": "./images/icon32.png",
+        "48": "./images/icon48.png",
+        "128": "./images/icon128.png"
     },
     
     "web_accessible_resources": [
         {
-            "resources": ["content.js"],
+            "resources": ["./script/content.js"],
             "matches": ["<all_urls>"]
         }
     ]

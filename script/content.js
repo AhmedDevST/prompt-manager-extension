@@ -99,7 +99,7 @@ function insertTextIntoElement(element, text) {
             }
             
             // Show success notification
-            showNotification('✅ Prompt pasted successfully!');
+           // showNotification('✅ Prompt pasted successfully!');
         }, 50);
         
         return true;
@@ -220,10 +220,10 @@ function isVisible(element) {
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         console.log('Text copied to clipboard');
-        showNotification('📋 Prompt copied to clipboard!');
+      //  showNotification('📋 Prompt copied to clipboard!');
     }).catch(err => {
         console.error('Failed to copy to clipboard:', err);
-        showNotification('❌ Failed to copy prompt', 'error');
+      //  showNotification('❌ Failed to copy prompt', 'error');
     });
 }
 
